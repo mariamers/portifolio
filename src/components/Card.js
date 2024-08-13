@@ -1,14 +1,29 @@
-import React from 'react'
+import React from 'react';
+import { getColorClass } from './utils/Colors';
 
-export default function Card(props) {
+const sizeClasses = {
+  s: "p-4 text-sm",      // Pequeno
+  m: "p-8 text-sm justify-end pr-12",      // Médio
+  b: "py-24 pl-12 pr-64 justify-center gap-6 ",     // Grande
+};
+const headingSizeClasses = {
+  s: "text-xl",          // Pequeno
+  m: "text-lg font-semibold",         // Médio
+  b: "text-5xl font-bold",         // Grande
+};
+
+const Card = ({ title, children, color, size = 'default' }) => {
+  const colorClass = getColorClass(color);
+  const sizeClass = sizeClasses[size] || sizeClasses.m;
+  const headingSizeClass = headingSizeClasses[size] || headingSizeClasses.m;
+
+
   return (
-    <div className="overflow-hidden flex flex-grow justify-center items-start relative p-8 rounded-xl border-gray-800 bg-gray-900 h-full">
-    <div className='w-full'>
-    <h2 className='text-lg font-medium text-center transition group-hover:text-purple-950 text-white pb-4 '>{props.Title}</h2>
-        {props.children}
-      </div>
+    <div className={`overflow-hidden flex flex-grow text-left flex-col items-start relative border-4 rounded-xl border-black ${colorClass} ${sizeClass}`}>
+      <h2 className={`transition font-semibold  ${headingSizeClass}`}>{title ? title : "Title"}</h2>
+      {children ? children : 'Body text for whatever you’d like to say. '}
     </div>
-    
-  )
-}
+  );
+};
 
+export default Card;
