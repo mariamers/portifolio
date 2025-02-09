@@ -28,7 +28,7 @@ const Item = ({ type, children, title }) => {
             case "row":
                 return (
                     <Section title={title}>
-                        <div className="flex flex-row gap-4">
+                        <div className="flex flex-row gap-4 flex-wrap">
                             {children}
                         </div>
                     </Section>

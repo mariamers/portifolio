@@ -19,7 +19,7 @@ const Card = ({ title, children, color, size = 'default' }) => {
 
 
   return (
-    <div className={`overflow-hidden flex flex-grow text-left flex-col items-start relative border-4 rounded-xl border-black ${colorClass} ${sizeClass}`}>
+    <div className={`max-w-56 overflow-hidden flex flex-grow text-left flex-col items-start relative border-4 rounded-xl border-black ${colorClass} ${sizeClass}`}>
       <h2 className={`transition font-semibold  ${headingSizeClass}`}>{title ? title : "Title"}</h2>
       {children ? children : 'Body text for whatever you’d like to say. '}
     </div>
